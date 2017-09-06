@@ -2,7 +2,7 @@
 class serieManager extends manager{
 	//private $_db;
 
-	
+
 	/*function __construct($db){
 		$this->setDB($db);
 	}
@@ -31,7 +31,7 @@ class serieManager extends manager{
 	//Retourne une seule série
 	public function getSerie($id){
 		$req = $this->_db->query('SELECT * FROM serie WHERE id = '.$id);
-		$donnee = $req->fetch(PDO::FETCH_ASSOC);
+		$donnee = $req->fetchAll(PDO::FETCH_ASSOC);
 		var_dump($donnee);
 
 		return new serie($donnee);
