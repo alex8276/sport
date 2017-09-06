@@ -8,14 +8,14 @@ spl_autoload_register('chargerClasse');
 $db = new PDO('mysql:host=localhost;dbname=sport', 'root', 'azerty');
 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING); // On émet une alerte à chaque fois qu'une requête a échoué.
 
-$s = new seance;
+/*$s = new seance();
 $t='developpé couché';
 $s->setExercice($t);
 $s->setPoids(150);
 $exs = array(1,2);
 
 //var_dump($s);
-echo '<br> Tu as fais du '.$s->getExercice().' à '.$s->getPoids().' le '.date('d/m/Y H:i:s').'<br>';
+echo '<br> Tu as fais du '.$s->getExercice().' à '.$s->getPoids().' le '.date('d/m/Y H:i:s').'<br>';*/
 
 //$s->addSerie(1,10,100);
 //$s->addSerie(1,10,110);
@@ -24,14 +24,21 @@ echo '<br> Tu as fais du '.$s->getExercice().' à '.$s->getPoids().' le '.date('
 //}
 //$i = new serie();
 
-//$manager = new manager($db);		
+$manager = new manager($db);		
 $test = new serieManager($db);
 //$test->addSerie($i);
 $toto = $test->getSerie(1);
 
-var_dump($toto);
+//var_dump($toto);
 
-$r = $toto->getExercice();
+//$r = $toto->getExercice();
+
+$se = new seanceManager($db);
+$se1 = $se->get(1);
+$se1->getSeries();
+//$se2 = $se1->getExercice();
+//echo $se2->merde();
+var_dump($se1);
 //echo $r->getNom();
 //var_dump($s->getSeries());
 //$tab = $s->getSeries();

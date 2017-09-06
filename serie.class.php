@@ -2,6 +2,7 @@
 class serie{
 	private $_id;
 	private $_idExercice;
+	private $_nom;
 	private $_idSeance;
 	private $_rep;
 	private $_charge;
@@ -14,6 +15,14 @@ class serie{
 		$this->_reps = 10;
 		$this->_charge = 100;*/
 		$this->hydrate($donnees);
+		$this->getExercice();
+	}
+
+	public function setId($id){
+		$this->_id = (int)$id;
+	}
+	public function getId(){
+		return $this->_id;
 	}
 	public function getIdExercice(){
 		return $this->_idExercice;
@@ -26,10 +35,11 @@ class serie{
 		$db = new PDO('mysql:host=localhost;dbname=sport', 'root', 'azerty');
 		$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
 		$manager = new exerciceManager($db);
-		return $manager->get($this->_idExercice);
-		
+		$this->_exercice = $manager->get($this->_id)->getNom();
 	}
-
+	public function merde(){
+		return $this->_exercice;
+	}
 	public function getIdSeance(){
 		return $this->_idSeance;
 	}

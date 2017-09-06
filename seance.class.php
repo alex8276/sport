@@ -5,14 +5,17 @@ class seance{
 	private $_date;
 	private $_exercice;
 	private $_poids;
-	private $_series = array();
+	private $_series ;
 
-	function __construct(){
-		echo "c est ta première séance";
+	function __construct(array $donnees){
+		$this->hydrate($donnees);
 	}
 
 	public function getId(){	
 		return $this->_id;
+	}
+	public function setId($id){
+		$this->_id = (int)$id;
 	}
 
 	public function getDate(){	
@@ -36,12 +39,21 @@ class seance{
 		$this->_poids = $poids;
 	}
 
-	public function getSeries(){
+	/*public function getSeries(){
 		//for($i=0;$i<=count($this->_series;$i++)){
 
 		//}
 		return $this->_series;
+	}*/
+
+	public function getSeries(){
+		$db = new PDO('mysql:host=localhost;dbname=sport', 'root', 'azerty');
+		$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
+		$manager = new serieManager($db);
+		$this->_series = $manager->getSerie($this->_id);
+		return $this->_series;
 	}
+
 
 	#Initialisation d'un objet
 	public function hydrate (array $donnée){

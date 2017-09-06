@@ -31,8 +31,8 @@ class serieManager extends manager{
 	//Retourne une seule série
 	public function getSerie($id){
 		$req = $this->_db->query('SELECT * FROM serie WHERE id = '.$id);
-		$donnee = $req->fetchAll(PDO::FETCH_ASSOC);
-		var_dump($donnee);
+		$donnee = $req->fetch(PDO::FETCH_ASSOC);
+		//var_dump($donnee);
 
 		return new serie($donnee);
 	}
