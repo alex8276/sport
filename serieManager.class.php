@@ -2,7 +2,7 @@
 class serieManager extends manager{
 	//private $_db;
 
-
+	echo 'toto';
 	/*function __construct($db){
 		$this->setDB($db);
 	}
