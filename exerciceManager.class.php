@@ -1,5 +1,5 @@
 <?php
-class exerciceManager extends manager{
+class exerciceManager /*extends manager*/{
 	/*private $_db;
 
 
@@ -12,9 +12,8 @@ class exerciceManager extends manager{
 	}*/
 
 	public function get($id){
-		$req = $this->_db->query('SELECT * FROM exercice WHERE id = '.$id);
+		$req = connexion::getInstance()->query('SELECT * FROM exercice WHERE id = '.$id);
 		$donnee = $req->fetch(PDO::FETCH_ASSOC);
-		var_dump($donnee);
 		return new exercice($donnee);
 	}
 }

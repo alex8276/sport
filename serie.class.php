@@ -32,9 +32,7 @@ class serie{
 	}
 
 	public function getExercice(){
-		$db = new PDO('mysql:host=localhost;dbname=sport', 'root', 'azerty');
-		$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
-		$manager = new exerciceManager($db);
+		$manager = new exerciceManager();
 		$this->_exercice = $manager->get($this->_id)->getNom();
 	}
 	public function merde(){

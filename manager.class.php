@@ -1,12 +1,12 @@
 <?php
 
 class manager {
-function __construct($db){
-		$this->setDB($db);
+function __construct(){
+		$this->_db = connexion::getInstance();
 	}
-	public function setDB(PDO $db){
+	/*public function setDB(PDO $db){
 		$this->_db = $db;
-	}
+	}*/
 	
 }
 

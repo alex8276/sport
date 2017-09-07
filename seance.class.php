@@ -47,10 +47,8 @@ class seance{
 	}*/
 
 	public function getSeries(){
-		$db = new PDO('mysql:host=localhost;dbname=sport', 'root', 'azerty');
-		$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
-		$manager = new serieManager($db);
-		$this->_series = $manager->getSerie($this->_id);
+		$manager = new serieManager();
+		$this->_series = $manager->getListSerie();
 		return $this->_series;
 	}
 
