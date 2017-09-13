@@ -9,6 +9,20 @@ class seanceManager extends manager{
 		return new seance($donnee);
 	}
 
+	public function add(seance $seance){
+		$req = connexion::getInstance()->prepare('INSERT INTO seance (dateSeance) values (:dateSence)');
+
+		$req->bindValue('dateSeance', $seance->getDate());
+		$req->execute();
+	}
+
+	public function RecupIdSeance(){
+		$req= connexion::getInstance()->query('SELECT MAX(id) id FROM seance ');
+		$donnée = $req->fetch(PDO::FETCH_ASSOC);
+
+		return $donnée;
+	}
+
 }
 
 

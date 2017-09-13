@@ -9,11 +9,6 @@ class serie{
 
 
 	function __construct(array $donnees){
-		/*$this->_id = 1;
-		$this->_idExercice = 1;
-		$this->_idSeance = 1;
-		$this->_reps = 10;
-		$this->_charge = 100;*/
 		$this->hydrate($donnees);
 		$this->getExercice();
 	}
@@ -33,10 +28,8 @@ class serie{
 
 	public function getExercice(){
 		$manager = new exerciceManager();
-		$this->_exercice = $manager->get($this->_id)->getNom();
-	}
-	public function merde(){
-		return $this->_exercice;
+		$this->_nom = $manager->get($this->_idExercice)->getNom();
+
 	}
 	public function getIdSeance(){
 		return $this->_idSeance;

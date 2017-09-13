@@ -16,12 +16,23 @@ $test = new serieManager();
 $toto = $test->getSerie(1);
 
 
-$se = new seanceManager();
+$se = new seanceManager();//Insere la nouvelle seance puis récup l'id qu'on passe a la boucle qui ajoiute les sseries
 $se1 = $se->get(1);
-$se1->getSeries();
-//$se2 = $se1->getExercice();
-//echo $se2->merde();
-var_dump($se1);
+$se1->addSerie(new serie(array('idSeance'=>1, 'idExercice'=>1,'charge'=>90, 'rep'=>20)));
+$se1->addSerie(new serie(array('idSeance'=>1, 'idExercice'=>2,'charge'=>100, 'rep'=>20)));
+
+var_dump($se1->getSeries());
+var_dump($se->recupIdSeance());
+echo('<h1>num de seance: '.$se->recupIdSeance()['id'].' </h1>');
+$seance2 = new seance(array('date'=>'2017-08-21'));
+var_dump($seance2);
+/*var_dump($ser);
+$test->addSerie($ser);*/
+
+/*$se1->getSeries();
+$se2 = $se1->getExercice();
+var_dump($se1);*/
+
 //echo $r->getNom();
 //var_dump($s->getSeries());
 //$tab = $s->getSeries();

@@ -25,10 +25,6 @@ class exercice extends manager{
 		}
 	}
 
-
-
-
-
 	#Initialisation d'un objet
 	public function hydrate (array $donnée){
 		foreach ($donnée as $key => $value){

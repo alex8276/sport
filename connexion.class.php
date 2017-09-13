@@ -72,6 +72,10 @@ class connexion
     return $this->PDOInstance->query($query);
   }
 
+  public function prepare($query){
+    return $this->PDOInstance->prepare($query);
+  }
+
 }
 
 ?>

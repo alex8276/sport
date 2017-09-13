@@ -5,11 +5,11 @@ class serieManager /*extends manager*/{
 		var_dump($series);
 
 		try{
-			$req = $this->_db->prepare('INSERT INTO serie(idExercice, idSeance,charge,rep) VALUES(:idExercice, :idSeance, :charge, :rep)');
+			$req = connexion::getInstance()->prepare('INSERT INTO serie(idExercice, idSeance,charge,rep) VALUES(:idExercice, :idSeance, :charge, :rep)');
 			$req->bindValue(':idExercice',$serie->getIdExercice(),PDO::PARAM_INT);
 			$req->bindValue(':idSeance',$serie->getIdSeance(),PDO::PARAM_INT);
 			$req->bindValue(':charge',$serie->getCharge(),PDO::PARAM_INT);
-			$req->bindValue(':rep',$serie->getReps(),PDO::PARAM_INT);
+			$req->bindValue(':rep',$serie->getRep(),PDO::PARAM_INT);
 
 			$req->execute();
 		}catch(PDOException $e){
@@ -23,13 +23,11 @@ class serieManager /*extends manager*/{
 	public function getSerie($id){
 		$req = connexion::getInstance()->query('SELECT * FROM serie WHERE id = '.$id);
 		$donnee = $req->fetch(PDO::FETCH_ASSOC);
-
 		return new serie($donnee);
 	}
 
 	public function getListSerie(){
-		$req = connexion::getInstance()->query('SELECT s.*, e.* FROM serie s INNER JOIN exercice e ON s.idExercice = e.id ');
-
+		$req = connexion::getInstance()->query('SELECT * FROM serie');
 		while($donnee = $req->fetch(PDO::FETCH_ASSOC)){
 			$series[] = new serie($donnee);
 		}

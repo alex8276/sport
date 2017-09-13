@@ -4,11 +4,15 @@ class seance{
 	private $_id;
 	private $_date;
 	private $_exercice;
-	private $_poids;
 	private $_series ;
+	private $_series1 ;
 
 	function __construct(array $donnees){
 		$this->hydrate($donnees);
+		if($this->_id == null){
+			$manager = new seanceManager();
+			$this->_id = $manager->recupIdSeance()['id']+1;
+		}
 	}
 
 	public function getId(){	
@@ -45,12 +49,18 @@ class seance{
 		//}
 		return $this->_series;
 	}*/
-
+	public function addSerie(serie $serie){
+		$this->_serie[] = $serie;
+		var_dump($serie);
+	}
 	public function getSeries(){
 		$manager = new serieManager();
 		$this->_series = $manager->getListSerie();
 		return $this->_series;
 	}
+	/*public function getSeries(){
+		return $this->_series;
+	}*/
 
 
 	#Initialisation d'un objet
